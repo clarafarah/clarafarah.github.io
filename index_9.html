@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clara Farah Diba Bilqis — Geodetic Engineer & GIS Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #FDFAF7;
+    --bg2:         #F8F3EE;
+    --bg3:         #F2EAE1;
+    --orange:      #E8500A;
+    --orange-warm: #F26419;
+    --orange-pale: #FEF0E7;
+    --orange-rim:  rgba(232,80,10,0.18);
+    --ink:         #1A0F07;
+    --ink2:        #3A2318;
+    --ink3:        #6B4D3A;
+    --ink4:        #9C7B68;
+    --cream:       #F5EDE4;
+    --cream2:      #EDE0D4;
+    --white:       #FFFFFF;
+    --r:           6px;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink2);
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 64px;
+    background: rgba(253,250,247,0.82);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .4s, padding .4s, background .4s;
+  }
+  nav.scrolled {
+    border-color: var(--cream2);
+    padding: 14px 64px;
+    background: rgba(253,250,247,0.96);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600; font-style: italic;
+    color: var(--ink); text-decoration: none; letter-spacing: 0.01em;
+  }
+  .nav-logo em { color: var(--orange); font-style: italic; }
+  .nav-right { display: flex; align-items: center; gap: 40px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink3); text-decoration: none;
+    transition: color .2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1.5px; background: var(--orange);
+    transition: width .25s ease;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .lang-toggle {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  }
+  .lang-toggle span { color: var(--ink4); transition: color .2s; cursor: pointer; }
+  .lang-toggle span.active { color: var(--orange); }
+  .toggle-switch { position: relative; width: 36px; height: 19px; cursor: pointer; }
+  .toggle-switch input { opacity: 0; width: 0; height: 0; }
+  .toggle-track {
+    position: absolute; inset: 0; border-radius: 12px;
+    background: var(--cream2); transition: background .3s;
+  }
+  .toggle-switch input:checked ~ .toggle-track { background: var(--orange); }
+  .toggle-thumb {
+    position: absolute; top: 2.5px; left: 2.5px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: white; transition: transform .3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,.18);
+  }
+  .toggle-switch input:checked ~ .toggle-track .toggle-thumb { transform: translateX(17px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 130px 64px 80px;
+    position: relative; overflow: hidden;
+    background: var(--bg);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    background: radial-gradient(ellipse 80% 80% at 80% 50%,
+      rgba(232,80,10,.06) 0%,
+      rgba(232,80,10,.02) 50%,
+      transparent 100%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px; background: var(--cream2);
+  }
+
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 340px;
+    gap: 80px; align-items: center;
+    width: 100%; max-width: 1200px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 24px; height: 1px; background: var(--orange);
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6.5vw, 96px);
+    font-weight: 400; line-height: 1.0;
+    color: var(--ink); letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .hero-name em { font-style: italic; color: var(--orange); }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-weight: 300; font-style: italic;
+    color: var(--ink4); margin-bottom: 28px;
+  }
+  .hero-desc {
+    font-size: 15px; color: var(--ink3);
+    max-width: 520px; line-height: 1.8; margin-bottom: 44px;
+  }
+  .hero-desc strong { color: var(--orange); font-weight: 600; }
+  .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--orange); color: white;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none; padding: 14px 30px;
+    clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+    transition: background .25s, transform .2s;
+  }
+  .btn-primary:hover { background: var(--ink); transform: translateY(-2px); }
+  .btn-primary svg { width: 13px; height: 13px; }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--ink3); padding: 14px 0;
+    border-bottom: 1.5px solid var(--cream2);
+    transition: color .2s, border-color .2s;
+  }
+  .btn-secondary:hover { color: var(--orange); border-color: var(--orange); }
+
+  /* Hero stats panel */
+  .hero-stats {
+    background: var(--white);
+    border: 1px solid var(--cream2);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px rgba(26,15,7,.06), 0 1px 4px rgba(26,15,7,.04);
+  }
+  .stat-item {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--cream2);
+    position: relative; overflow: hidden;
+    transition: padding-left .3s, background .2s;
+    cursor: default;
+  }
+  .stat-item:last-child { border-bottom: none; }
+  .stat-item::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--orange);
+    transform: scaleY(0); transform-origin: bottom;
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .stat-item:hover::before { transform: scaleY(1); }
+  .stat-item:hover { padding-left: 36px; background: var(--orange-pale); }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 600; color: var(--orange);
+    line-height: 1; margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink4);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 110px 64px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+  }
+  .section-eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--orange); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4vw, 58px);
+    font-weight: 400; line-height: 1.08;
+    color: var(--ink); margin-bottom: 64px;
+    letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; color: var(--orange); }
+
+  /* Scroll reveal */
+  .reveal { opacity:0; transform:translateY(32px); transition: opacity .75s ease, transform .75s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--bg); }
+  .exp-grid { display: flex; flex-direction: column; gap: 2px; }
+  .exp-row {
+    display: grid; grid-template-columns: 260px 1fr;
+    background: var(--white);
+    border: 1px solid var(--cream2);
+    border-radius: 2px; overflow: hidden;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .exp-row:hover {
+    border-color: var(--orange);
+    box-shadow: -4px 0 0 var(--orange), 0 6px 28px rgba(26,15,7,.07);
+  }
+  .exp-meta {
+    padding: 32px 28px;
+    border-right: 1px solid var(--cream2);
+    background: var(--bg2);
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .exp-period {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+  }
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.25;
+  }
+  .exp-role {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--ink4); text-transform: uppercase; margin-top: 2px;
+  }
+  .exp-location {
+    font-size: 12px; color: var(--ink4); margin-top: 4px;
+  }
+  .exp-detail { padding: 32px 36px; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .exp-bullets li {
+    font-size: 14px; color: var(--ink3); line-height: 1.7;
+    padding-left: 18px; position: relative;
+  }
+  .exp-bullets li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--orange); font-size: 11px; top: 3px;
+  }
+  .exp-bullets li .hl { color: var(--orange); font-weight: 600; }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--bg2); }
+  .projects-mosaic {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--cream2);
+    border: 1px solid var(--cream2);
+    border-radius: 2px; overflow: hidden;
+  }
+  .project-card {
+    position: relative; overflow: hidden;
+    background: var(--white); padding: 36px 30px 52px;
+    min-height: 240px; cursor: pointer;
+    transition: background .3s, transform .25s;
+  }
+  .project-card:hover { background: var(--orange); transform: none; }
+  .project-card:hover * { color: rgba(255,255,255,.95) !important; }
+  .project-card:hover .project-num { opacity: .12; }
+  .project-num {
+    position: absolute; top: -8px; right: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 100px; font-weight: 600;
+    color: var(--orange); opacity: .055; line-height: 1;
+    pointer-events: none; transition: opacity .3s;
+  }
+  .project-cat {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 12px; display: block;
+  }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px; font-weight: 600; color: var(--ink);
+    line-height: 1.25; margin-bottom: 12px;
+  }
+  .project-desc { font-size: 13px; color: var(--ink3); line-height: 1.7; }
+  .project-hint {
+    position: absolute; bottom: 20px; right: 24px;
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--orange); opacity: 0; transition: opacity .25s;
+  }
+  .project-card:hover .project-hint { opacity: .8; color: rgba(255,255,255,.7) !important; }
+
+  /* ── EDUCATION & AWARDS ── */
+  #education { background: var(--bg); }
+  .edu-awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .edu-card {
+    background: var(--white);
+    border: 1px solid var(--cream2); border-radius: 2px;
+    padding: 36px 32px; position: relative; overflow: hidden;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .edu-card:hover {
+    border-color: var(--orange);
+    box-shadow: 0 8px 36px rgba(26,15,7,.07);
+  }
+  .edu-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange) 0%, transparent 100%);
+  }
+  .edu-badge {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange);
+    background: var(--orange-pale); border: 1px solid var(--orange-rim);
+    padding: 4px 12px; display: inline-block; border-radius: 2px;
+    margin-bottom: 18px;
+  }
+  .edu-school {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 500; color: var(--ink); margin-bottom: 6px;
+  }
+  .edu-degree { font-size: 14px; color: var(--ink4); margin-bottom: 16px; }
+  .edu-gpa {
+    font-size: 13px; font-weight: 700; color: var(--orange);
+    margin-bottom: 6px; letter-spacing: 0.04em;
+  }
+  .edu-period { font-size: 11px; color: var(--ink4); margin-bottom: 24px; }
+  .achievements-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .achievements-list li {
+    font-size: 13px; color: var(--ink3); line-height: 1.55;
+    padding-left: 18px; position: relative;
+  }
+  .achievements-list li::before {
+    content: '★'; position: absolute; left: 0;
+    color: var(--orange); font-size: 9px; top: 3px;
+  }
+
+  .awards-column { display: flex; flex-direction: column; gap: 10px; }
+  .award-card {
+    background: var(--white); border: 1px solid var(--cream2); border-radius: 2px;
+    padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px;
+    position: relative; overflow: hidden;
+    transition: border-color .25s, transform .2s, box-shadow .25s;
+  }
+  .award-card:hover {
+    border-color: var(--orange); transform: translateX(6px);
+    box-shadow: -3px 0 0 var(--orange), 0 4px 18px rgba(26,15,7,.06);
+  }
+  .award-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, var(--orange), transparent);
+  }
+  .award-icon { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .award-year {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+    color: var(--orange); text-transform: uppercase; margin-bottom: 4px;
+  }
+  .award-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 600; color: var(--ink);
+    margin-bottom: 3px; line-height: 1.3;
+  }
+  .award-org { font-size: 12px; color: var(--ink4); }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .skill-group {
+    background: var(--white); border: 1px solid var(--cream2); border-radius: 2px;
+    padding: 26px 24px;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .skill-group:hover {
+    border-color: var(--orange);
+    box-shadow: 0 6px 28px rgba(26,15,7,.06);
+  }
+  .skill-group-title {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .skill-group-title::after { content: ''; flex: 1; height: 1px; background: var(--cream2); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .skill-tag {
+    font-size: 11px; background: var(--bg2); border: 1px solid var(--cream2);
+    color: var(--ink3); padding: 5px 11px; border-radius: 2px;
+    transition: background .2s, color .2s, border-color .2s;
+    cursor: default;
+  }
+  .skill-tag:hover { background: var(--orange); color: white; border-color: var(--orange); }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: var(--bg3); }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--ink); color: white; padding: 110px 64px;
+    position: relative; overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%,
+      rgba(232,80,10,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #contact .section-eyebrow { color: var(--orange-warm); }
+  #contact .section-eyebrow::before { background: var(--orange-warm); }
+  #contact .section-title { color: white; margin-bottom: 48px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-desc { font-size: 16px; color: rgba(255,255,255,.6); line-height: 1.85; margin-bottom: 44px; }
+  .contact-items { display: flex; flex-direction: column; gap: 22px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-item-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(232,80,10,.15); border: 1px solid rgba(232,80,10,.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--orange-warm); font-size: 17px; border-radius: 2px;
+  }
+  .contact-item-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 3px;
+  }
+  .contact-item-text { font-size: 14px; color: rgba(255,255,255,.8); }
+  .contact-item-text a { color: var(--orange-warm); text-decoration: none; }
+  .contact-item-text a:hover { text-decoration: underline; }
+  .contact-visual {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 52px 44px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08); border-radius: 2px;
+  }
+  .contact-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; font-weight: 300; font-style: italic;
+    color: white; line-height: 1.4; margin-bottom: 28px;
+  }
+  .contact-quote em { color: var(--orange-warm); font-style: normal; }
+  .contact-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--orange); color: white;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 15px 30px; text-decoration: none; border-radius: 1px;
+    clip-path: polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+    transition: background .25s;
+  }
+  .contact-cta:hover { background: white; color: var(--orange); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--orange);
+    padding: 26px 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-copy { font-size: 11px; font-weight: 400; letter-spacing: 0.06em; color: rgba(255,255,255,.75); }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 600; font-style: italic; color: white;
+  }
+
+  /* ── PROJECT MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(26,15,7,.88);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    align-items: center; justify-content: center; padding: 24px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--bg); max-width: 820px; width: 100%;
+    max-height: 90vh; overflow-y: auto; position: relative;
+    border-radius: 2px; border: 1px solid var(--cream2);
+    box-shadow: 0 32px 80px rgba(26,15,7,.35);
+    animation: mIn .4s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes mIn {
+    from { opacity:0; transform:scale(.94) translateY(20px); }
+    to   { opacity:1; transform:none; }
+  }
+  .modal-img-slider {
+    position: relative; background: var(--ink);
+    overflow: hidden; height: 340px; border-radius: 2px 2px 0 0;
+  }
+  .modal-img-slider img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0; transition: opacity .4s ease;
+  }
+  .modal-img-slider img.active { opacity: 1; }
+  .modal-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 14px;
+    background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%);
+    color: rgba(253,250,247,.3); font-size: 12px;
+    font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .modal-img-placeholder .big-icon { font-size: 64px; opacity: .35; }
+  .slider-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 40px; height: 40px; background: rgba(253,250,247,.12);
+    border: 1px solid rgba(253,250,247,.2); color: white;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 2; font-size: 16px;
+    transition: background .2s; border-radius: 2px;
+  }
+  .slider-btn:hover { background: var(--orange); border-color: var(--orange); }
+  .slider-btn.prev { left: 16px; } .slider-btn.next { right: 16px; }
+  .slider-btn.hidden { display: none; }
+  .slider-dots {
+    position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px; z-index: 2;
+  }
+  .slider-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,.3); cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .slider-dot.active { background: var(--orange); transform: scale(1.4); }
+  .modal-content { padding: 38px 42px 44px; }
+  .modal-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 10px; display: block;
+  }
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-weight: 600; color: var(--ink);
+    margin-bottom: 14px; line-height: 1.2;
+  }
+  .modal-desc { font-size: 14px; color: var(--ink3); line-height: 1.78; margin-bottom: 24px; }
+  .modal-tools-label {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ink4); margin-bottom: 12px;
+  }
+  .modal-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+  .modal-tool {
+    font-size: 11px; background: var(--bg2); border: 1px solid var(--cream2);
+    color: var(--ink3); padding: 5px 12px; border-radius: 2px;
+  }
+  .modal-close {
+    position: absolute; top: 14px; right: 16px;
+    width: 34px; height: 34px; background: rgba(26,15,7,.7);
+    color: white; border: none; cursor: pointer; z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; border-radius: 2px; transition: background .2s;
+  }
+  .modal-close:hover { background: var(--orange); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 960px) {
+    nav { padding: 16px 28px; }
+    nav.scrolled { padding: 12px 28px; }
+    .nav-links { display: none; }
+    section { padding: 72px 28px; }
+    #contact { padding: 72px 28px; }
+    .hero { padding: 110px 28px 64px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 52px; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
+    .stat-item { border-bottom: 1px solid var(--cream2) !important; }
+    .projects-mosaic { grid-template-columns: 1fr; }
+    .edu-awards-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+    .exp-row { grid-template-columns: 1fr; }
+    .exp-meta { border-right: none; border-bottom: 1px solid var(--cream2); }
+    footer { padding: 22px 28px; flex-direction: column; gap: 10px; text-align: center; }
+    #certifications > .container > div { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .nav-right { gap: 14px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .modal-img-slider { height: 220px; }
+    .modal-content { padding: 24px 24px 32px; }
+    .modal-title { font-size: 24px; }
+  }
+</style>
+
+</head>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Portfolio<em>.</em>Website</a>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <span class="lang-label-en active">EN</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="langToggle">
+        <div class="toggle-track"><div class="toggle-thumb"></div></div>
+      </label>
+      <span class="lang-label-id">ID</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
+      <li><a href="#projects" data-i18n="nav_proj">Projects</a></li>
+      <li><a href="#education" data-i18n="nav_edu">Education</a></li>
+      <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  
+  <div class="hero-inner">
+    <div class="hero-left reveal">
+      <div class="hero-eyebrow" data-i18n="hero_label">Geodesy Engineer · GIS Specialist</div>
+      <h1 class="hero-name">
+        Clara Farah<br><em>Diba Bilqis</em>
+      </h1>
+      <p class="hero-subtitle" data-i18n="hero_title">Bachelor of Engineering in Geodesy, Cum Laude</p>
+      <p class="hero-desc" data-i18n="hero_desc">Land mapping and geospatial data analysis enthusiast with ~4 years of academic and professional experience across infrastructure, dam engineering, and spatial planning. Graduated with honors, ranked Best Graduate of Geodesy at Lampung University.</p>
+      <div class="hero-actions"><a href="#contact" class="btn-primary">
+        <span data-i18n="hero_cta">Get in Touch</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a><a href="#experience" class="btn-secondary">View Work ↓</a></div>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat-item">
+        <div class="stat-num">3.72</div>
+        <div class="stat-label" data-i18n="stat_gpa">GPA / 4.00</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7+</div>
+        <div class="stat-label" data-i18n="stat_awards">Awards Won</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label" data-i18n="stat_exp">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">#1</div>
+        <div class="stat-label" data-i18n="stat_rank">Dept. Best Graduate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <span class="section-eyebrow" data-i18n="sec_exp_label">Professional Journey</span>
+    <h2 class="section-title" data-i18n="sec_exp_title">Work <em>Experience</em></h2>
+    <div class="exp-grid">
+
+      <!-- BBWS Citarum -->
+      <div class="exp-row reveal">
+        <div class="exp-meta">
+          <div class="exp-role" data-i18n="exp1_role">Technical Administration (Honorary)</div>
+          <div class="exp-company">Ministry of Public Works, BBWS Citarum</div>
+          <div class="exp-period">Aug 2025 – Present</div>
+          <div class="exp-location">Bandung, Indonesia</div>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets" id="exp1-bullets"></ul>
+        </div>
+      </div>
+
+      <!-- Wijaya Karya -->
+      <div class="exp-row reveal">
+        <div class="exp-meta">
+          <div class="exp-role" data-i18n="exp2_role">Engineering Staff (Intern)</div>
+          <div class="exp-company">PT. Wijaya Karya (Persero) Tbk</div>
+          <div class="exp-period">Feb 2025 – Aug 2025</div>
+          <div class="exp-location">Bogor, Indonesia</div>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets" id="exp2-bullets"></ul>
+        </div>
+      </div>
+
+      <!-- Hutama Karya -->
+      <div class="exp-row reveal">
+        <div class="exp-meta">
+          <div class="exp-role" data-i18n="exp3_role">Geodetic Engineer (Intern)</div>
+          <div class="exp-company">PT. Hutama Karya (PERSERO)</div>
+          <div class="exp-period">Aug 2023 – Nov 2023</div>
+          <div class="exp-location">Cilegon, Indonesia</div>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets" id="exp3-bullets"></ul>
+        </div>
+      </div>
+
+      <!-- Purwodadi -->
+      <div class="exp-row reveal">
+        <div class="exp-meta">
+          <div class="exp-role" data-i18n="exp4_role">Survey & Mapping (Project)</div>
+          <div class="exp-company">Purwodadi Village Office</div>
+          <div class="exp-period">Jun 2023 – Aug 2023</div>
+          <div class="exp-location">Lampung, Indonesia</div>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets" id="exp4-bullets"></ul>
+        </div>
+      </div>
+
+      <!-- BPN -->
+      <div class="exp-row reveal">
+        <div class="exp-meta">
+          <div class="exp-role" data-i18n="exp5_role">Surveyor & Mapping (Project)</div>
+          <div class="exp-company">National Land Agency (BPN) of South Lampung</div>
+          <div class="exp-period">Jan 2023 – Mar 2023</div>
+          <div class="exp-location">Lampung, Indonesia</div>
+        </div>
+        <div class="exp-detail">
+          <ul class="exp-bullets" id="exp5-bullets"></ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <span class="section-eyebrow" data-i18n="sec_proj_label">Highlight Projects</span>
+    <h2 class="section-title" data-i18n="sec_proj_title">Selected <em>Projects</em></h2>
+    <div class="projects-mosaic" id="projects-mosaic"></div>
+  </div>
+</section>
+
+<!-- EDUCATION & AWARDS -->
+<section id="education">
+  <div class="container">
+    <span class="section-eyebrow" data-i18n="sec_edu_label">Academic Background</span>
+    <h2 class="section-title" data-i18n="sec_edu_title">Education & <em>Awards</em></h2>
+    <div class="edu-awards-grid">
+      <!-- Education -->
+      <div class="edu-card reveal">
+        <span class="edu-badge" data-i18n="edu_badge">Bachelor of Engineering</span>
+        <div class="edu-school">Lampung University</div>
+        <div class="edu-degree" data-i18n="edu_degree">Geodesy Engineering · Faculty of Engineering</div>
+        <div class="edu-gpa">GPA 3.72 / 4.00 — <em style="color:var(--grey-soft);font-style:italic;font-weight:400" data-i18n="edu_cum">Cum Laude</em></div>
+        <div class="edu-period">September 2020 – September 2024</div>
+        <ul class="achievements-list" id="edu-achievements"></ul>
+      </div>
+      <!-- Awards -->
+      <div class="awards-column reveal" id="awards-column"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <span class="section-eyebrow" data-i18n="sec_skills_label">Technical Proficiency</span>
+    <h2 class="section-title" data-i18n="sec_skills_title">Skills & <em>Tools</em></h2>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="sg_field">Field Instruments</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Total Station</span>
+          <span class="skill-tag">Theodolite</span>
+          <span class="skill-tag">Waterpass</span>
+          <span class="skill-tag">GPS Geodetic</span>
+          <span class="skill-tag">Drone / UAV</span>
+          <span class="skill-tag">LiDAR</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="sg_gis">GIS & Remote Sensing</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ArcGIS</span>
+          <span class="skill-tag">QGIS</span>
+          <span class="skill-tag">Google Earth Engine</span>
+          <span class="skill-tag">Pix4D</span>
+          <span class="skill-tag">HEC-RAS</span>
+          <span class="skill-tag">SPSS</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="sg_cad">Engineering & CAD</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Civil 3D</span>
+          <span class="skill-tag">Revit</span>
+          <span class="skill-tag">AutoCAD</span>
+          <span class="skill-tag">Microsoft Project</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="sg_lang">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Indonesian (Native)</span>
+          <span class="skill-tag">English (Fluent · TOEFL B1 540)</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="sg_office">Office & Reporting</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Microsoft Word</span>
+          <span class="skill-tag">Microsoft Excel</span>
+          <span class="skill-tag">Microsoft Project</span>
+          <span class="skill-tag">Reporting</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title" data-i18n="sg_soft">Core Competencies</div>
+        <div class="skill-tags">
+          <span class="skill-tag" data-i18n="soft1">Research</span>
+          <span class="skill-tag" data-i18n="soft2">Project Planning</span>
+          <span class="skill-tag" data-i18n="soft3">Cross-team Collaboration</span>
+          <span class="skill-tag" data-i18n="soft4">Problem Solving</span>
+          <span class="skill-tag" data-i18n="soft5">Detail-Oriented</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CERTIFICATIONS & ORGANIZATION -->
+<section id="certifications" >
+  <div class="container">
+    <span class="section-eyebrow" data-i18n="sec_cert_label">Additional Information</span>
+    <h2 class="section-title" data-i18n="sec_cert_title">Certifications & <em>Leadership</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+      <!-- Certifications -->
+      <div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:10px;" data-i18n="cert_sub">Certificates</div>
+        <div style="display:flex;flex-direction:column;gap:12px;" id="cert-list"></div>
+      </div>
+
+      <!-- Organizational -->
+      <div>
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:10px;" data-i18n="org_sub">Non-Profit & Organizational Leadership</div>
+        <div style="display:flex;flex-direction:column;gap:12px;" id="org-list"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-eyebrow" data-i18n="sec_contact_label">Let's Connect</span>
+    <h2 class="section-title" data-i18n="sec_contact_title">Get in <em>Touch</em></h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-desc" data-i18n="contact_desc">I'm actively seeking opportunities in GIS, land management, spatial analysis, and infrastructure engineering. If you have a role or collaboration that aligns with my expertise, I'd love to hear from you.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-text"><a href="/cdn-cgi/l/email-protection#096a65687b686f6d606b68496e64686065276a6664"><span class="__cf_email__" data-cfemail="f5969994879493919c9794b59298949c99db969a98">[email&#160;protected]</span></a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone / WhatsApp</div>
+              <div class="contact-item-text"><a href="tel:082380930092">082380930092</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💼</div>
+            <div>
+              <div class="contact-item-label">LinkedIn</div>
+              <div class="contact-item-text"><a href="https://www.linkedin.com/in/clarafarah/" target="_blank">linkedin.com/in/clarafarah</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-visual reveal">
+        <p class="contact-quote" data-i18n="contact_quote">"Mapping the world, <em>one coordinate</em> at a time."</p>
+        <a href="/cdn-cgi/l/email-protection#54373835263532303d3635143339353d387a373b39" class="contact-cta">
+          <span data-i18n="contact_cta_btn">Send a Message</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy" data-i18n="footer_copy">© 2025 Clara Farah Diba Bilqis · All Rights Reserved</div>
+  <div class="footer-logo">Clara<em>.</em></div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ─── TRANSLATIONS ───────────────────────────────────────────────
+const i18n = {
+  en: {
+    nav_exp: "Experience",
+    nav_proj: "Projects",
+    nav_edu: "Education",
+    nav_skills: "Skills",
+    nav_contact: "Contact",
+    hero_label: "Geodesy Engineer · GIS Specialist",
+    hero_title: "Bachelor of Engineering in Geodesy, Cum Laude",
+    hero_desc: "Land mapping and geospatial data analysis enthusiast with ~4 years of academic and professional experience across infrastructure, dam engineering, and spatial planning. Graduated with honors, ranked Best Graduate of Geodesy at Lampung University.",
+    hero_cta: "Get in Touch",
+    stat_gpa: "GPA / 4.00",
+    stat_awards: "Awards Won",
+    stat_exp: "Years Experience",
+    stat_rank: "Dept. Best Graduate",
+    sec_exp_label: "Professional Journey",
+    sec_exp_title: "Work <em>Experience</em>",
+    exp1_role: "Technical Administration (Honorary)",
+    exp2_role: "Engineering Staff (Intern)",
+    exp3_role: "Geodetic Engineer (Intern)",
+    exp4_role: "Survey & Mapping (Project)",
+    exp5_role: "Surveyor & Mapping (Project)",
+    sec_proj_label: "Highlight Projects",
+    sec_proj_title: "Selected <em>Projects</em>",
+    sec_edu_label: "Academic Background",
+    sec_edu_title: "Education & <em>Awards</em>",
+    edu_badge: "Bachelor of Engineering",
+    edu_degree: "Geodesy Engineering · Faculty of Engineering",
+    edu_cum: "Cum Laude",
+    sec_skills_label: "Technical Proficiency",
+    sec_skills_title: "Skills & <em>Tools</em>",
+    sg_field: "Field Instruments",
+    sg_gis: "GIS & Remote Sensing",
+    sg_cad: "Engineering & CAD",
+    sg_lang: "Languages",
+    sg_office: "Office & Reporting",
+    sg_soft: "Core Competencies",
+    soft1: "Research", soft2: "Project Planning",
+    soft3: "Cross-team Collaboration", soft4: "Problem Solving", soft5: "Detail-Oriented",
+    sec_contact_label: "Let's Connect",
+    sec_contact_title: "Get in <em>Touch</em>",
+    contact_desc: "I'm actively seeking opportunities in GIS, land management, spatial analysis, and infrastructure engineering. If you have a role or collaboration that aligns with my expertise, I'd love to hear from you.",
+    contact_quote: '"Mapping the world, <em>one coordinate</em> at a time."',
+    contact_cta_btn: "Send a Message",
+    sec_cert_label: "Additional Information",
+    sec_cert_title: "Certifications & <em>Leadership</em>",
+    cert_sub: "Certificates",
+    org_sub: "Non-Profit & Organizational Leadership",
+    footer_copy: "© 2025 Clara Farah Diba Bilqis · All Rights Reserved",
+  },
+  id: {
+    nav_exp: "Pengalaman",
+    nav_proj: "Proyek",
+    nav_edu: "Pendidikan",
+    nav_skills: "Keahlian",
+    nav_contact: "Kontak",
+    hero_label: "Insinyur Geodesi · Spesialis GIS",
+    hero_title: "Sarjana Teknik Geodesi, Cum Laude",
+    hero_desc: "Penggemar pemetaan lahan dan analisis data geospasial dengan ~4 tahun pengalaman akademik dan profesional di bidang infrastruktur, teknik bendungan, dan perencanaan spasial. Lulus dengan predikat pujian sebagai Lulusan Terbaik Teknik Geodesi Universitas Lampung.",
+    hero_cta: "Hubungi Saya",
+    stat_gpa: "IPK / 4.00",
+    stat_awards: "Penghargaan",
+    stat_exp: "Tahun Pengalaman",
+    stat_rank: "Lulusan Terbaik Prodi",
+    sec_exp_label: "Perjalanan Profesional",
+    sec_exp_title: "Pengalaman <em>Kerja</em>",
+    exp1_role: "Administrasi Teknis (Honorer)",
+    exp2_role: "Staf Teknik (Magang)",
+    exp3_role: "Insinyur Geodesi (Magang)",
+    exp4_role: "Survey & Pemetaan (Proyek)",
+    exp5_role: "Surveyor & Pemetaan (Proyek)",
+    sec_proj_label: "Proyek Unggulan",
+    sec_proj_title: "Proyek <em>Terpilih</em>",
+    sec_edu_label: "Latar Belakang Akademik",
+    sec_edu_title: "Pendidikan & <em>Penghargaan</em>",
+    edu_badge: "Sarjana Teknik",
+    edu_degree: "Teknik Geodesi · Fakultas Teknik",
+    edu_cum: "Cum Laude / Pujian",
+    sec_skills_label: "Kompetensi Teknis",
+    sec_skills_title: "Keahlian & <em>Alat</em>",
+    sg_field: "Instrumen Lapangan",
+    sg_gis: "GIS & Penginderaan Jauh",
+    sg_cad: "Rekayasa & CAD",
+    sg_lang: "Bahasa",
+    sg_office: "Perkantoran & Pelaporan",
+    sg_soft: "Kompetensi Utama",
+    soft1: "Riset", soft2: "Perencanaan Proyek",
+    soft3: "Kolaborasi Lintas Tim", soft4: "Pemecahan Masalah", soft5: "Teliti & Detail",
+    sec_contact_label: "Mari Terhubung",
+    sec_contact_title: "Hubungi <em>Saya</em>",
+    contact_desc: "Saya aktif mencari peluang di bidang GIS, manajemen lahan, analisis spasial, dan teknik infrastruktur. Jika Anda memiliki posisi atau kolaborasi yang sesuai dengan keahlian saya, saya sangat terbuka untuk berdiskusi.",
+    contact_quote: '"Memetakan dunia, <em>satu koordinat</em> dalam satu waktu."',
+    contact_cta_btn: "Kirim Pesan",
+    sec_cert_label: "Informasi Tambahan",
+    sec_cert_title: "Sertifikasi & <em>Kepemimpinan</em>",
+    cert_sub: "Sertifikat",
+    org_sub: "Non-Profit & Kepemimpinan Organisasi",
+    footer_copy: "© 2025 Clara Farah Diba Bilqis · Hak Cipta Dilindungi",
+  }
+};
+
+// ─── EXPERIENCE BULLETS ───────────────────────────────────────
+const expBullets = {
+  en: {
+    exp1: [
+      `Managed end-to-end project administration for <span class="hl">3 major dam projects</span> (Cijurey, Situ Lembang, Cipancuh), covering addendum, dam safety documentation, budget reports, and progress monitoring.`,
+      `Accelerated progress analysis <span class="hl">3× faster</span> by generating monthly LiDAR contour maps in direct collaboration with PT. Hutama Karya — reducing manual review cycles significantly.`,
+      `Designed detailed 3D spillway models for Cijurey Dam in <span class="hl">Revit</span>, bridging cross-functional gaps between field engineers and design teams.`,
+      `Developed a 3D excavation model in <span class="hl">Civil 3D</span> including subassembly creation and corridor modeling for grading operations.`,
+      `Optimized project timeline alignment using <span class="hl">Microsoft Project</span>, identifying schedule risks early and reducing potential contractual delays.`,
+    ],
+    exp2: [
+      `Generated monthly high-resolution LiDAR contour maps, enabling progress analysis that was <span class="hl">3× faster and more accurate</span> than conventional methods.`,
+      `Collaborated with the engineering team to design detailed <span class="hl">3D spillway models</span> for Cijurey Dam using Revit, ensuring design accuracy at critical infrastructure points.`,
+      `Developed a comprehensive 3D excavation model in <span class="hl">Civil 3D</span> with subassembly creation and corridor modeling, supporting precision grading operations.`,
+      `Planned and analyzed project schedules in <span class="hl">Microsoft Project</span> to ensure contractual timeline compliance and proactively reduce construction delays.`,
+    ],
+    exp3: [
+      `Coordinated joint surveys and excavation plans with <span class="hl">PT. Doosan and 10+ subcontractors</span>, leveraging cut-and-fill analysis to achieve <span class="hl">2× cost and resource efficiency</span>.`,
+      `Produced monthly high-resolution <span class="hl">orthophotos via drone</span> technology, providing accurate visual progress tracking for PLTU Jawa 9&10 CFSPP.`,
+      `Prevented structural failures by conducting systematic settlement inspections — measuring <span class="hl">vertical and horizontal H-beam displacements</span> with precision.`,
+      `Achieved <span class="hl">100% accuracy</span> in u-ditch installations through precise stakeout execution, eliminating any design revisions post-installation.`,
+    ],
+    exp4: [
+      `Produced official GIS-based boundary maps for Purwodadi Village through rigorous field validation, delivered as the <span class="hl">authoritative reference for Bangun Rejo District</span>.`,
+    ],
+    exp5: [
+      `Developed vector boundary data (shapefile) for Sukarame Village, contributing directly to <span class="hl">BPN's official database</span> for Natar Sub-district land records.`,
+      `Established precise benchmarks using <span class="hl">GPS geodetic instruments</span> for boundary mapping, ensuring data accuracy compliant with national standards.`,
+      `Produced the <span class="hl">first classified road condition map</span> for Natar Sub-district — becoming a critical reference document for regional infrastructure planning.`,
+    ],
+  },
+  id: {
+    exp1: [
+      `Mengelola administrasi proyek dari hulu ke hilir untuk <span class="hl">3 proyek bendungan besar</span> (Cijurey, Situ Lembang, Cipancuh), mencakup addendum, dokumen keamanan bendungan, laporan anggaran, dan pemantauan kemajuan.`,
+      `Mempercepat analisis progres <span class="hl">3× lebih cepat</span> dengan menghasilkan peta kontur LiDAR bulanan bersama PT. Hutama Karya — memangkas siklus review manual secara signifikan.`,
+      `Merancang model 3D spillway Bendungan Cijurey secara detail di <span class="hl">Revit</span>, menjembatani kesenjangan antara tim lapangan dan tim desain.`,
+      `Mengembangkan model galian 3D di <span class="hl">Civil 3D</span> lengkap dengan pembuatan subassembly dan pemodelan koridor untuk operasi grading.`,
+      `Mengoptimalkan keselarasan jadwal proyek menggunakan <span class="hl">Microsoft Project</span>, mengidentifikasi risiko jadwal lebih awal dan meminimalkan keterlambatan kontraktual.`,
+    ],
+    exp2: [
+      `Menghasilkan peta kontur LiDAR resolusi tinggi bulanan yang membuat analisis progres <span class="hl">3× lebih cepat dan akurat</span> dibanding metode konvensional.`,
+      `Berkolaborasi dengan tim teknik untuk merancang model <span class="hl">3D spillway</span> Bendungan Cijurey menggunakan Revit, memastikan akurasi desain pada titik infrastruktur kritis.`,
+      `Mengembangkan model galian 3D komprehensif di <span class="hl">Civil 3D</span> dengan subassembly dan corridor modeling, mendukung operasi grading secara presisi.`,
+      `Merencanakan dan menganalisis jadwal proyek di <span class="hl">Microsoft Project</span> untuk memastikan kepatuhan terhadap tenggat kontrak dan mengurangi keterlambatan konstruksi.`,
+    ],
+    exp3: [
+      `Mengkoordinasikan survei bersama dan rencana penggalian dengan <span class="hl">PT. Doosan dan 10+ subkontraktor</span>, memanfaatkan analisis cut-and-fill sehingga efisiensi biaya dan sumber daya meningkat <span class="hl">2×</span>.`,
+      `Memproduksi ortofoto resolusi tinggi bulanan melalui teknologi <span class="hl">drone</span>, menyediakan pelacakan visual progres yang akurat untuk PLTU Jawa 9&10.`,
+      `Mencegah kegagalan struktural dengan melakukan inspeksi settlement secara sistematis — mengukur <span class="hl">pergeseran H-beam vertikal dan horizontal</span> dengan presisi tinggi.`,
+      `Mencapai <span class="hl">akurasi 100%</span> dalam pemasangan u-ditch melalui eksekusi stakeout yang presisi, menghilangkan kebutuhan revisi desain pasca-instalasi.`,
+    ],
+    exp4: [
+      `Menghasilkan peta batas desa berbasis GIS yang akurat untuk Desa Purwodadi melalui validasi lapangan yang ketat, diserahkan sebagai <span class="hl">referensi resmi Kecamatan Bangun Rejo</span>.`,
+    ],
+    exp5: [
+      `Menghasilkan data batas vektor (shapefile) Desa Sukarame yang berkontribusi langsung pada <span class="hl">database resmi BPN</span> untuk catatan pertanahan Kecamatan Natar.`,
+      `Mendirikan benchmark akurat menggunakan <span class="hl">GPS geodetik</span> untuk pemetaan batas, memastikan keakuratan data sesuai standar nasional.`,
+      `Menghasilkan <span class="hl">peta kondisi jalan terklasifikasi pertama</span> untuk Kecamatan Natar — menjadi dokumen referensi utama bagi perencanaan infrastruktur wilayah.`,
+    ],
+  }
+};
+
+// ─── PROJECTS DATA ─────────────────────────────────────────────
+const projectsData = {
+  en: [
+    { tag: "Land Use Mapping", title: "Land Cover Classification — South Lampung", desc: "Performed multi-temporal land use analysis for Way Huwi Village using minimum distance classification, delivering spatial insights that <span style='color:var(--orange);font-weight:600'>enabled policy-oriented development planning</span> for local government." },
+    { tag: "Topographic Mapping", title: "Kendal Regency Terrain Analysis — Central Java", desc: "Conducted comprehensive topographic mapping covering slope direction, morphology, and terrain forms for Kendal Regency, providing <span style='color:var(--orange);font-weight:600'>baseline data for land use and regional development policy</span>." },
+    { tag: "Boundary Mapping", title: "Official Village Boundary — Purwodadi Village", desc: "Developed precise GIS-based boundary and area maps with field validation, formally presented to the district head as the <span style='color:var(--orange);font-weight:600'>official planning reference</span> for Bangun Rejo District." },
+    { tag: "Road & Boundary Mapping", title: "BPN Mapping — Sukarame Village, Natar", desc: "Delivered shapefile vector data for BPN and produced the <span style='color:var(--orange);font-weight:600'>first classified road condition map</span> for Natar Sub-district, now used as a key infrastructure planning resource." },
+    { tag: "Watershed Analysis", title: "Way Balau Watershed Mapping", desc: "Mapped slope, precipitation, and soil type across the Way Balau watershed to establish a <span style='color:var(--orange);font-weight:600'>scientific baseline for watershed function</span> and sustainable regional development." },
+    { tag: "Drainage Engineering", title: "Stormwater Drainage Design — PLTU Jawa 9&10", desc: "Designed stormwater drainage systems for the Balance of Plant Area at a <span style='color:var(--orange);font-weight:600'>2×1,000 MW coal power plant project</span> using GIS and CAD, navigating complex electrical infrastructure constraints." },
+    { tag: "3D Modeling", title: "3D Spillway & Excavation Model — Cijurey Dam", desc: "Led 3D spillway modeling in Revit and excavation corridor modeling in Civil 3D for Cijurey Dam, delivering <span style='color:var(--orange);font-weight:600'>precision design data</span> used for construction execution and safety compliance." },
+    { tag: "LiDAR Mapping", title: "Monthly LiDAR Contour Mapping — Dam Projects", desc: "Generated monthly LiDAR contour maps for 3 dam projects in collaboration with PT. Hutama Karya, achieving progress analysis <span style='color:var(--orange);font-weight:600'>3× faster</span> and significantly more accurate than previous methods." },
+    { tag: "Social Innovation", title: "LamBudayaApps — Gold Medal WICE 2022", desc: "Developed a Lampung traditional learning application that won a <span style='color:var(--orange);font-weight:600'>Gold Medal at the World Invention Competition (WICE) 2022</span>, SEGi University Malaysia — competing against international teams." },
+  ],
+  id: [
+    { tag: "Pemetaan Tutupan Lahan", title: "Klasifikasi Tutupan Lahan — Lampung Selatan", desc: "Melakukan analisis multi-temporal penggunaan lahan di Desa Way Huwi menggunakan klasifikasi minimum distance, menghasilkan wawasan spasial yang <span style='color:var(--orange);font-weight:600'>mendukung perencanaan pembangunan berorientasi kebijakan</span> pemerintah daerah." },
+    { tag: "Pemetaan Topografi", title: "Analisis Terrain Kabupaten Kendal — Jawa Tengah", desc: "Melakukan pemetaan topografi komprehensif mencakup arah lereng, morfologi, dan bentuk terrain Kabupaten Kendal, menyediakan <span style='color:var(--orange);font-weight:600'>data dasar untuk kebijakan penggunaan lahan dan pengembangan wilayah</span>." },
+    { tag: "Pemetaan Batas", title: "Batas Desa Resmi — Desa Purwodadi", desc: "Menghasilkan peta batas dan luas berbasis GIS yang presisi melalui validasi lapangan, secara resmi diserahkan kepada kepala kecamatan sebagai <span style='color:var(--orange);font-weight:600'>referensi perencanaan resmi</span> Kecamatan Bangun Rejo." },
+    { tag: "Pemetaan Jalan & Batas", title: "Pemetaan BPN — Desa Sukarame, Natar", desc: "Menyerahkan data vektor shapefile untuk BPN dan menghasilkan <span style='color:var(--orange);font-weight:600'>peta kondisi jalan terklasifikasi pertama</span> Kecamatan Natar, kini digunakan sebagai sumber daya kunci perencanaan infrastruktur." },
+    { tag: "Analisis DAS", title: "Pemetaan DAS Way Balau", desc: "Memetakan lereng, curah hujan, dan jenis tanah di DAS Way Balau untuk menetapkan <span style='color:var(--orange);font-weight:600'>baseline ilmiah fungsi daerah aliran sungai</span> dan pembangunan wilayah yang berkelanjutan." },
+    { tag: "Teknik Drainase", title: "Desain Drainase Stormwater — PLTU Jawa 9&10", desc: "Merancang sistem drainase stormwater untuk Balance of Plant Area pada <span style='color:var(--orange);font-weight:600'>proyek PLTU batubara 2×1.000 MW</span> menggunakan GIS dan CAD, menavigasi kendala infrastruktur kelistrikan yang kompleks." },
+    { tag: "Pemodelan 3D", title: "Model 3D Spillway & Galian — Bendungan Cijurey", desc: "Memimpin pemodelan 3D spillway di Revit dan corridor galian di Civil 3D untuk Bendungan Cijurey, menghasilkan <span style='color:var(--orange);font-weight:600'>data desain presisi</span> yang digunakan untuk eksekusi konstruksi dan kepatuhan keselamatan." },
+    { tag: "Pemetaan LiDAR", title: "Peta Kontur LiDAR Bulanan — Proyek Bendungan", desc: "Menghasilkan peta kontur LiDAR bulanan untuk 3 proyek bendungan bersama PT. Hutama Karya, mencapai analisis progres <span style='color:var(--orange);font-weight:600'>3× lebih cepat</span> dan jauh lebih akurat dari metode sebelumnya." },
+    { tag: "Inovasi Sosial", title: "LamBudayaApps — Medali Emas WICE 2022", desc: "Mengembangkan aplikasi pembelajaran tradisional Lampung yang meraih <span style='color:var(--orange);font-weight:600'>Medali Emas di World Invention Competition (WICE) 2022</span>, SEGi University Malaysia — berkompetisi melawan tim internasional." },
+  ]
+};
+
+// ─── AWARDS DATA ───────────────────────────────────────────────
+const awardsData = {
+  en: [
+    { year: "2022", icon: "🥇", name: "Gold Medal — WICE 2022", org: "World Invention Competition, SEGi University Malaysia" },
+    { year: "2024", icon: "🎓", name: "1st Best Graduate — Geodesy Dept.", org: "Lampung University, Faculty of Engineering" },
+    { year: "2024", icon: "🎓", name: "2nd Best Graduate — Faculty of Engineering", org: "Lampung University" },
+    { year: "2022", icon: "🏅", name: "Top 10 National Finalist", org: "Simposium Nasional ILP2MI" },
+    { year: "2021", icon: "🏆", name: "1st Winner — SDGs Innovation", org: "Indonesian Social Action Summit, Kita Beraksi" },
+    { year: "2021", icon: "🥉", name: "3rd Winner — Scientific Writing", org: "Sekolah Menulis, UKM Penelitian Unila" },
+  ],
+  id: [
+    { year: "2022", icon: "🥇", name: "Medali Emas — WICE 2022", org: "World Invention Competition, SEGi University Malaysia" },
+    { year: "2024", icon: "🎓", name: "Lulusan Terbaik 1 — Prodi Geodesi", org: "Universitas Lampung, Fakultas Teknik" },
+    { year: "2024", icon: "🎓", name: "Lulusan Terbaik 2 — Fakultas Teknik", org: "Universitas Lampung" },
+    { year: "2022", icon: "🏅", name: "Top 10 Finalis Nasional", org: "Simposium Nasional ILP2MI" },
+    { year: "2021", icon: "🏆", name: "Juara 1 — Inovasi SDGs", org: "Indonesian Social Action Summit, Kita Beraksi" },
+    { year: "2021", icon: "🥉", name: "Juara 3 — Karya Tulis Ilmiah", org: "Sekolah Menulis, UKM Penelitian Unila" },
+  ]
+};
+
+const eduAchievements = {
+  en: [
+    "Graduated cum laude — GPA 3.72 / 4.00",
+    "1st Best Graduate of Geodesy Engineering Dept.",
+    "2nd Best Graduate of Faculty of Engineering",
+    "Gold Medal, International WICE 2022 — Malaysia",
+    "Top 10 National Finalist, Simposium Nasional ILP2MI",
+    "1st Winner, SDGs Innovation — ISAS 2021",
+    "Completed in 3.98 years (on time with honors)",
+  ],
+  id: [
+    "Lulus dengan predikat Pujian — IPK 3.72 / 4.00",
+    "Lulusan Terbaik 1 Program Studi Teknik Geodesi",
+    "Lulusan Terbaik 2 Fakultas Teknik",
+    "Medali Emas, WICE Internasional 2022 — Malaysia",
+    "Top 10 Finalis Nasional, Simposium Nasional ILP2MI",
+    "Juara 1 Inovasi SDGs — ISAS 2021",
+    "Selesai dalam 3,98 tahun (tepat waktu dengan predikat pujian)",
+  ]
+};
+
+
+// ─── CERTIFICATIONS DATA ───────────────────────────────────────
+const certData = {
+  en: [
+    { icon: "📋", name: "HEC-RAS Application Training", org: "Ministry of Public Works / HATHI Lampung", date: "January 2025", num: "08/HATHI-LAMPUNG/1/2025" },
+    { icon: "🌐", name: "TOEFL Level B1 — Score 540", org: "180 English School", date: "February 2025", num: "273/180DES/AETS/II/2025" },
+    { icon: "🏅", name: "Certificate of Appreciation", org: "PT. Hutama Karya (PERSERO) — Java 9&10 CFSPP Internship", date: "November 2023", num: "" },
+    { icon: "🤝", name: "Certificate of Recognition", org: "Nanjing Normal University — Cross Cultural Exchange", date: "November 2022", num: "" },
+  ],
+  id: [
+    { icon: "📋", name: "Pelatihan Aplikasi HEC-RAS", org: "Kementerian Pekerjaan Umum / HATHI Lampung", date: "Januari 2025", num: "08/HATHI-LAMPUNG/1/2025" },
+    { icon: "🌐", name: "TOEFL Level B1 — Skor 540", org: "180 English School", date: "Februari 2025", num: "273/180DES/AETS/II/2025" },
+    { icon: "🏅", name: "Sertifikat Apresiasi", org: "PT. Hutama Karya (PERSERO) — Magang Java 9&10 CFSPP", date: "November 2023", num: "" },
+    { icon: "🤝", name: "Sertifikat Pengakuan", org: "Nanjing Normal University — Pertukaran Budaya Lintas Negara", date: "November 2022", num: "" },
+  ]
+};
+
+// ─── ORGANIZATIONAL DATA ───────────────────────────────────────
+const orgData = {
+  en: [
+    { icon: "🌏", title: "Cross Cultural Student Exchange", desc: "Collaborated with Nanjing Normal University (China) to research cultural traditions between Indonesia and China; produced project documentation using 360-degree video technology." },
+    { icon: "🌱", title: "SDG Youth Town Hall 2021", desc: "Selected as one of 50 national delegates to lead a campaign raising awareness about the dangers of early marriage in support of the SDGs. Organized by Rutgers WPF Indonesia & 2030 Youth Force Indonesia." },
+    { icon: "📐", title: "Geodesy Student Association (HIMAGES UNILA)", desc: "Outstanding Secretary at two national-scale events — Geodesi Festival & Seminar Nasional 2022 — successfully raising tens of millions in sponsorship funding." },
+    { icon: "🔬", title: "Research Student Association (UKM Penelitian UNILA)", desc: "Coordinated regular events between internal and external student organizations as Secretary; organized UKM-P Goes To 1 — 2022 cross-UKM exchange program." },
+    { icon: "🎓", title: "Lab Assistant — Terrestrial Survey II", desc: "Provided hands-on instruction for survey tools (theodolite, total station) and map processing using AutoCAD; achieved 100% course completion for all freshmen students." },
+  ],
+  id: [
+    { icon: "🌏", title: "Pertukaran Pelajar Lintas Budaya", desc: "Berkolaborasi dengan Nanjing Normal University (China) untuk meneliti tradisi budaya antara Indonesia dan China; menghasilkan dokumentasi proyek menggunakan teknologi video 360 derajat." },
+    { icon: "🌱", title: "SDG Youth Town Hall 2021", desc: "Terpilih sebagai 1 dari 50 delegasi nasional untuk memimpin kampanye peningkatan kesadaran tentang bahaya pernikahan dini dalam mendukung SDGs. Diselenggarakan oleh Rutgers WPF Indonesia & 2030 Youth Force Indonesia." },
+    { icon: "📐", title: "Himpunan Mahasiswa Geodesi (HIMAGES UNILA)", desc: "Sekretaris Terbaik dalam dua acara skala nasional — Geodesi Festival & Seminar Nasional 2022 — berhasil mengumpulkan dana sponsorship puluhan juta rupiah." },
+    { icon: "🔬", title: "UKM Penelitian UNILA", desc: "Mengkoordinasikan acara rutin antara organisasi mahasiswa internal dan eksternal sebagai Sekretaris; menyelenggarakan program pertukaran antar UKM UKM-P Goes To 1 — 2022." },
+    { icon: "🎓", title: "Asisten Lab — Survei Terestris II", desc: "Memberikan instruksi langsung penggunaan alat survei (teodolite, total station) dan pemrosesan peta menggunakan AutoCAD; mencapai penyelesaian 100% untuk seluruh mahasiswa baru." },
+  ]
+};
+
+// ─── STATE ─────────────────────────────────────────────────────
+let lang = localStorage.getItem('portfolio_lang') || 'en';
+
+function renderAll() {
+  const l = lang;
+
+  // static i18n keys
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[l][key] !== undefined) el.innerHTML = i18n[l][key];
+  });
+
+  // experience bullets
+  ['exp1','exp2','exp3','exp4','exp5'].forEach(id => {
+    const ul = document.getElementById(id + '-bullets');
+    if (!ul) return;
+    ul.innerHTML = expBullets[l][id].map(b => `<li>${b}</li>`).join('');
+  });
+
+  // projects
+  const mosaic = document.getElementById('projects-mosaic');
+  if (mosaic) {
+    mosaic.innerHTML = projectsData[l].map((p, i) => `
+      <div class="project-card reveal" onclick="openModal(${i})">
+        <div class="project-num">${String(i+1).padStart(2,'0')}</div>
+        <span class="project-cat">${p.tag}</span>
+        <div class="project-title">${p.title}</div>
+        <div class="project-desc">${p.desc}</div>
+        <span class="project-hint">View details →</span>
+      </div>
+    `).join('');
+    observeReveal();
+  }
+
+  // awards
+  const awardsCol = document.getElementById('awards-column');
+  if (awardsCol) {
+    awardsCol.innerHTML = awardsData[l].map(a => `
+      <div class="award-card reveal">
+        <div class="award-icon">${a.icon}</div>
+        <div>
+          <div class="award-year">${a.year}</div>
+          <div class="award-name">${a.name}</div>
+          <div class="award-org">${a.org}</div>
+        </div>
+      </div>
+    `).join('');
+    observeReveal();
+  }
+
+  // edu achievements
+  const eaList = document.getElementById('edu-achievements');
+  if (eaList) {
+    eaList.innerHTML = eduAchievements[l].map(a => `<li>${a}</li>`).join('');
+  }
+
+  // certifications
+  const certList = document.getElementById('cert-list');
+  if (certList) {
+    certList.innerHTML = certData[l].map(c => `
+      <div style="display:flex;align-items:flex-start;gap:14px;background:var(--cream-card);border:1px solid var(--cream-border);padding:16px 18px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);">
+        <span style="font-size:20px;flex-shrink:0;">${c.icon}</span>
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:3px;">${c.name}</div>
+          <div style="font-size:12px;color:var(--ink4);margin-bottom:3px;">${c.org}</div>
+          <div style="font-size:10px;color:var(--orange);font-weight:500;letter-spacing:0.1em;">${c.date}${c.num ? ' · ' + c.num : ''}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // organizational
+  const orgList = document.getElementById('org-list');
+  if (orgList) {
+    orgList.innerHTML = orgData[l].map(o => `
+      <div style="display:flex;align-items:flex-start;gap:14px;background:var(--cream-card);border:1px solid var(--cream-border);padding:16px 18px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);">
+        <span style="font-size:20px;flex-shrink:0;">${o.icon}</span>
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:4px;">${o.title}</div>
+          <div style="font-size:13px;color:var(--ink3);line-height:1.65;">${o.desc}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // toggle labels
+  document.querySelector('.lang-label-en').classList.toggle('active', l === 'en');
+  document.querySelector('.lang-label-id').classList.toggle('active', l === 'id');
+  document.getElementById('langToggle').checked = (l === 'id');
+}
+
+// ─── TOGGLE HANDLER ────────────────────────────────────────────
+document.getElementById('langToggle').addEventListener('change', e => {
+  lang = e.target.checked ? 'id' : 'en';
+  localStorage.setItem('portfolio_lang', lang);
+  renderAll();
+});
+
+
+// ─── PROJECT IMAGES (using real map screenshots from CV context) ──
+// Project images - add your own image URLs here per project
+// Format: ["url1", "url2", ...] for each project (0-8)
+const projectImages = [
+  [], // 0: Land Use Mapping
+  [], // 1: Topographic Mapping
+  [], // 2: Boundary Mapping - Purwodadi
+  [], // 3: Road & Boundary - Sukarame
+  [], // 4: Watershed - Way Balau
+  [], // 5: Stormwater Drainage - PLTU
+  [], // 6: 3D Spillway - Cijurey Dam
+  [], // 7: LiDAR & Drone Mapping
+  [], // 8: LamBudayaApps
+];
+
+const projectTools = [
+  ["ArcGIS", "QGIS", "Landsat", "Remote Sensing", "NDVI"],
+  ["QGIS", "DEM", "ArcGIS", "Slope Analysis", "Morphology"],
+  ["ArcGIS", "GPS", "Total Station", "Shapefile", "Field Survey"],
+  ["GPS", "ArcGIS", "Shapefile", "BPN Standards", "Road Classification"],
+  ["ArcGIS", "Hydrology Analysis", "DEM", "Soil Classification"],
+  ["Civil 3D", "AutoCAD", "GIS", "Drainage Design", "CAD"],
+  ["Revit", "Civil 3D", "AutoCAD", "3D Modeling", "BIM"],
+  ["LiDAR", "Drone", "Pix4D", "Orthophoto", "Contour Mapping"],
+  ["App Development", "Social Innovation", "Education Technology"],
+];
+
+let currentImgIndex = 0;
+let currentProjectIndex = -1;
+let currentImgs = [];
+
+function openModal(idx) {
+  currentProjectIndex = idx;
+  currentImgIndex = 0;
+  const l = lang;
+  const p = projectsData[l][idx];
+
+  // set placeholder icon per project
+  const icons = ['🗺️','🏔️','📐','🛣️','🌊','🏗️','💧','✈️','📱'];
+  const iconEl = document.getElementById('modalPlaceholderIcon');
+  const textEl = document.getElementById('modalPlaceholderText');
+  if (iconEl) iconEl.textContent = icons[idx] || '🗺️';
+  if (textEl) textEl.textContent = (currentImgs.length === 0) ? 'No images added yet' : '';
+  document.getElementById('modalTag').textContent = p.tag;
+  document.getElementById('modalTitle').textContent = p.title;
+  // strip html from desc
+  const tmp = document.createElement('div');
+  tmp.innerHTML = p.desc;
+  document.getElementById('modalDesc').textContent = tmp.textContent;
+
+  // tools
+  const tools = projectTools[idx] || [];
+  document.getElementById('modalTools').innerHTML = tools.map(t => `<span class="modal-tool">${t}</span>`).join('');
+
+  // images
+  currentImgs = projectImages[idx] || [];
+  buildSlider(currentImgs);
+
+  document.getElementById('projectModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function buildSlider(imgs) {
+  const slider = document.getElementById('modalSlider');
+  const placeholder = document.getElementById('modalPlaceholder');
+  const prev = document.getElementById('sliderPrev');
+  const next = document.getElementById('sliderNext');
+  const dotsEl = document.getElementById('sliderDots');
+
+  // remove old imgs
+  slider.querySelectorAll('img').forEach(i => i.remove());
+  dotsEl.innerHTML = '';
+
+  if (!imgs || imgs.length === 0) {
+    placeholder.style.display = 'flex';
+    prev.classList.add('hidden');
+    next.classList.add('hidden');
+    return;
+  }
+
+  placeholder.style.display = 'none';
+
+  imgs.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Project image';
+    img.onerror = function() { this.style.display='none'; };
+    if (i === 0) img.classList.add('active');
+    slider.insertBefore(img, prev);
+
+    const dot = document.createElement('div');
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsEl.appendChild(dot);
+  });
+
+  prev.classList.toggle('hidden', imgs.length <= 1);
+  next.classList.toggle('hidden', imgs.length <= 1);
+  updateSliderButtons();
+}
+
+function goToSlide(idx) {
+  const imgs = document.getElementById('modalSlider').querySelectorAll('img');
+  const dots = document.getElementById('sliderDots').querySelectorAll('.slider-dot');
+  imgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  currentImgIndex = idx;
+  updateSliderButtons();
+}
+
+function slideImg(dir) {
+  const imgs = document.getElementById('modalSlider').querySelectorAll('img');
+  const next = currentImgIndex + dir;
+  if (next < 0 || next >= imgs.length) return;
+  goToSlide(next);
+}
+
+function updateSliderButtons() {
+  const imgs = document.getElementById('modalSlider').querySelectorAll('img');
+  document.getElementById('sliderPrev').classList.toggle('hidden', currentImgIndex === 0 || imgs.length <= 1);
+  document.getElementById('sliderNext').classList.toggle('hidden', currentImgIndex >= imgs.length - 1 || imgs.length <= 1);
+}
+
+function closeModal() {
+  document.getElementById('projectModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('projectModal')) closeModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft') slideImg(-1);
+  if (e.key === 'ArrowRight') slideImg(1);
+});
+
+// ─── SCROLL REVEAL ─────────────────────────────────────────────
+let revealObserver;
+function observeReveal() {
+  if (revealObserver) revealObserver.disconnect();
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (!el.classList.contains('visible')) revealObserver.observe(el);
+  });
+}
+
+// ─── NAVBAR SCROLL ─────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── INIT ──────────────────────────────────────────────────────
+renderAll();
+observeReveal();
+</script>
+</body>
+</html>
